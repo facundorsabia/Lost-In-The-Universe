@@ -22,11 +22,11 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49397
+49687
 Successfully changed project path to: /Users/facundo/Documents/GitHub/Lost-In-The-Universe/Lost in the Universe
 /Users/facundo/Documents/GitHub/Lost-In-The-Universe/Lost in the Universe
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 99.99 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 124.74 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.19f1 (68f137dc9bbe)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -37,86 +37,86 @@ Vendor:   NVIDIA Corporation
 Version:  3.3 NVIDIA-10.4.14 310.90.30.05b27
 GLES:     0
  GL_ARB_blend_func_extended GL_ARB_ES2_compatibility GL_ARB_explicit_attrib_location GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_occlusion_query2 GL_ARB_sampler_objects GL_ARB_separate_shader_objects GL_ARB_shader_bit_encoding GL_ARB_shading_language_include GL_ARB_texture_rgb10_a2ui GL_ARB_texture_storage GL_ARB_texture_swizzle GL_ARB_timer_query GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewport_array GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_bounds_test GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_mirror_clamp GL_EXT_texture_sRGB_decode GL_APPLE_client_storage GL_APPLE_container_object_shareable GL_APPLE_flush_render GL_APPLE_object_purgeable GL_APPLE_rgb_422 GL_APPLE_row_bytes GL_APPLE_texture_range GL_ATI_texture_mirror_once GL_NV_texture_barrier
-OPENGL LOG: Creating OpenGL 3.3 graphics device ; Context level  <OpenGL 3.3> ; Context handle 1603378688
+OPENGL LOG: Creating OpenGL 3.3 graphics device ; Context level  <OpenGL 3.3> ; Context handle -1156928000
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56574
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56736
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.001057 seconds.
+Registered in 0.001640 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 108.03 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 418.11 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.537 seconds
+- Completed reload, in 11.570 seconds
 Domain Reload Profiling:
-	ReloadAssembly (4538ms)
-		BeginReloadAssembly (91ms)
+	ReloadAssembly (11570ms)
+		BeginReloadAssembly (115ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1232ms)
-			LoadAssemblies (88ms)
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (4511ms)
+			LoadAssemblies (112ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (526ms)
+			SetupTypeCache (1695ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (107ms)
-			SetupLoadedEditorAssemblies (468ms)
+			RebuildScriptCaches (526ms)
+			SetupLoadedEditorAssemblies (1666ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
+				InitializePlatformSupportModulesInManaged (18ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (108ms)
-				BeforeProcessingInitializeOnLoad (24ms)
-				ProcessInitializeOnLoadAttributes (243ms)
-				ProcessInitializeOnLoadMethodAttributes (82ms)
+				RefreshPlugins (418ms)
+				BeforeProcessingInitializeOnLoad (67ms)
+				ProcessInitializeOnLoadAttributes (910ms)
+				ProcessInitializeOnLoadMethodAttributes (252ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003033 seconds.
+Registered in 0.006434 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 3.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.015 seconds
+- Completed reload, in  5.711 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3017ms)
-		BeginReloadAssembly (434ms)
+	ReloadAssembly (5713ms)
+		BeginReloadAssembly (585ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (13ms)
+			DisableScriptedObjects (16ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (86ms)
-		EndReloadAssembly (2379ms)
-			LoadAssemblies (191ms)
+			CreateAndSetChildDomain (93ms)
+		EndReloadAssembly (4829ms)
+			LoadAssemblies (281ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (963ms)
+			SetupTypeCache (2133ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (134ms)
-			SetupLoadedEditorAssemblies (781ms)
+			RebuildScriptCaches (583ms)
+			SetupLoadedEditorAssemblies (1091ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (13ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (4ms)
-				BeforeProcessingInitializeOnLoad (177ms)
-				ProcessInitializeOnLoadAttributes (571ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (4ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (239ms)
+				ProcessInitializeOnLoadAttributes (822ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
+				AfterProcessingInitializeOnLoad (3ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (25ms)
+			AwakeInstancesAfterBackupRestoration (21ms)
 Platform modules already initialized, skipping
-Validating Project structure ... 0.011328 seconds.
+Validating Project structure ... 0.008887 seconds.
 Shader import version has changed; will reimport all shaders...
-Upgrading shader files ...0.013212 seconds.
+Upgrading shader files ...0.012470 seconds.
 Application.AssetDatabase Initial Script Refresh Start
 RefreshInfo: InitialScriptRefreshV2(NoUpdateAssetOptions) scanfilter:  ... 1 filters
 RefreshProfiler: Total: 0.000ms
@@ -130,14 +130,14 @@ Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
 Initializing Unity extensions:
 ========================================================================
 Worker process is ready to serve import requests
-Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1413 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 159.3 MB.
-System memory in use after: 158.5 MB.
+System memory in use before: 159.5 MB.
+System memory in use after: 158.8 MB.
 
 Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 1886.
-Total: 9.377453 ms (FindLiveObjects: 0.426697 ms CreateObjectMapping: 0.099395 ms MarkObjects: 7.503909 ms  DeleteObjects: 1.344700 ms)
+Total: 15.737109 ms (FindLiveObjects: 0.479276 ms CreateObjectMapping: 0.121828 ms MarkObjects: 13.480722 ms  DeleteObjects: 1.651340 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -151,8 +151,40 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Stylized Astronaut/Stylized Astronaut.prefab
-  artifactKey: Guid(2abf19653d633114faedf3b60dc6c39f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Stylized Astronaut/Stylized Astronaut.prefab using Guid(2abf19653d633114faedf3b60dc6c39f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '097c50a41ebe74d9c25674f9f89790e1') in 0.368034 seconds 
-  Import took 0.374568 seconds .
+  path: Assets/Scripts/PlayerAstronaut.cs
+  artifactKey: Guid(b2864119572fd42039b1a732ee815c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerAstronaut.cs using Guid(b2864119572fd42039b1a732ee815c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf8c6fd5060e6558717f600e4e5403e6') in 0.244295 seconds 
+  Import took 0.253760 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 89.170433 seconds.
+  path: Assets/Scenes/LostIntheUniverse.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/LostIntheUniverse.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b645ac7ac566679303be4874898c783c') in 0.034714 seconds 
+  Import took 0.043222 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.053778 seconds.
+  path: Assets/LowPolyAlienWorld/Scenes/ExampleScene.unity
+  artifactKey: Guid(1087aaeff440f7748a7bef1a7ec81c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LowPolyAlienWorld/Scenes/ExampleScene.unity using Guid(1087aaeff440f7748a7bef1a7ec81c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69fe25aec4c4654309f83750612909be') in 0.004271 seconds 
+  Import took 0.012517 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.419125 seconds.
+  path: Assets/LowPolyAlienWorld/Materials/Colors3.mat
+  artifactKey: Guid(4457d4214ef7ac1468876f8f30174519) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LowPolyAlienWorld/Materials/Colors3.mat using Guid(4457d4214ef7ac1468876f8f30174519) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f62f7d782eea20714e6d309a00bd87f9') in 0.363530 seconds 
+  Import took 0.372291 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 64.881087 seconds.
+  path: Assets/Scenes/LostInTheUniverse.unity
+  artifactKey: Guid(1087aaeff440f7748a7bef1a7ec81c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/LostInTheUniverse.unity using Guid(1087aaeff440f7748a7bef1a7ec81c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0fdd1c43de4df21ad93e82eddf897f1') in 0.003511 seconds 
+  Import took 0.009950 seconds .
 

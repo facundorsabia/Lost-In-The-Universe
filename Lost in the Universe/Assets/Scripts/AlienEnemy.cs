@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AlienEnemy : MonoBehaviour
 {
-            // Custom Variables
+    // Custom Variables
+
+    [SerializeField] private GameObject visionRay;
+    [SerializeField] private float distanceRay = 10.0f;
     [SerializeField] private float speedEnemy = 3f;
     [SerializeField] private float speedToLook = 5f;
     private GameObject player;
@@ -22,6 +25,7 @@ public class AlienEnemy : MonoBehaviour
     void Update()
     {
         SetEnemyBehaviour(enemyBehaviour);
+        Raycast();
     }
 
     private void MoveEnemy(Vector3 direction)
@@ -56,5 +60,25 @@ public class AlienEnemy : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void Raycast()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward), out hit, distanceRay))
+        {
+            if(hit.transform.tag == "Player")
+            {
+                enemyBehaviour = EnemyBehaviour.Chase;
+                Debug.Log("El Alien te vio");
+            }            
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * distanceRay);
     }
 }
