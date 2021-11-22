@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3859365119749362486}
   m_Layer: 6
   m_Name: Gems Purple 3
-  m_TagString: Untagged
+  m_TagString: Gem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3859365117987178780}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.8059235, y: 4.380591, z: 3.5764356}

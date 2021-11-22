@@ -19,11 +19,6 @@ public class Gem : MonoBehaviour
 
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.layer == 7)
-        {
-        Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarás listo.");
-        Destroy(gameObject);
-        GameManager.addScore();
-        }
+
     }
 }

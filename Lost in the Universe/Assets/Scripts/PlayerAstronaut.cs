@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAstronaut : MonoBehaviour
 {
+    private InventoryManager mgInventory;
     private Animator anim;
 	private CharacterController controller;
 	[SerializeField] private float speed = 10f;
@@ -25,7 +26,6 @@ public class PlayerAstronaut : MonoBehaviour
     private bool isFlip = false;
     private bool isRun = false;
     private bool isJump = false;
-    private bool jumping = false;
     private bool gateActivated = false;
 
     private Animator animPlayer;
@@ -41,6 +41,7 @@ public class PlayerAstronaut : MonoBehaviour
 
     [SerializeField] private GameObject [] wallPoints;
 
+    [SerializeField] private GameObject spaceShip;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class PlayerAstronaut : MonoBehaviour
         transform.localScale = new Vector3 (playerScale, playerScale, playerScale);
         _initialPosition = transform.position;
         animPlayer = GetComponent<Animator>();
+        mgInventory = GetComponent<InventoryManager>();
     }
 
     // Update is called once per frame
@@ -63,6 +65,11 @@ public class PlayerAstronaut : MonoBehaviour
         Jump();
         animPlayer.SetBool("isJump", isJump);
         PlayerDead();
+
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            UseItem();
+        }
 
     }
     // Custom Methods
@@ -142,7 +149,14 @@ public class PlayerAstronaut : MonoBehaviour
     //Method to transform player Scale with triggering the gate
     private void OnTriggerEnter (Collider other)
     {
-
+        if (other.gameObject.CompareTag("Gem"))
+        {
+            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarás listo.");
+            GameManager.addScore();
+            GameObject gem = other.gameObject;
+            gem.SetActive(false);
+            mgInventory.AddInventoryOne(gem);
+        }
     }
 
     private void OnTriggerStay (Collider other)
@@ -171,6 +185,12 @@ public class PlayerAstronaut : MonoBehaviour
          }
      }
 
+    private void UseItem()
+    {
+        GameObject gem = mgInventory.GetInventoryOne();
+        gem.SetActive(true);
+        gem.transform.position = spaceShip.transform.position + new Vector3(1f, 0, 0);
+    }
      
 }
 

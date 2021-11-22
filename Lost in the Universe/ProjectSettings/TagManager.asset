@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enviroment
   - Terrain
+  - Gem
   layers:
   - Default
   - TransparentFX
