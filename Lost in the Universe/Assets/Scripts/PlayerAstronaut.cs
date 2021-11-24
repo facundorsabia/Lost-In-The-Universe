@@ -151,11 +151,12 @@ public class PlayerAstronaut : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gem"))
         {
-            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarás listo.");
+            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarï¿½s listo.");
             GameManager.addScore();
             GameObject gem = other.gameObject;
             gem.SetActive(false);
             mgInventory.AddInventoryOne(gem);
+            AudioManager.instance.GemSFX();
         }
     }
 
