@@ -25,6 +25,6 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject GetInventoryOne()
     {
-        return inventoryOne.Pop() as GameObject;
+      return inventoryOne.Pop() as GameObject;
     }
 }
