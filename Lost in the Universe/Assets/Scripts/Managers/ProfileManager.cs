@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class ProfileManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static ProfileManager instance;
 
-    //Gem Types
-    public enum typesGem {Gem, SuperGem, HiperGem};
-
-    private int score;
+    [SerializeField] private string playerName;
 
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
-            score = 0;
             DontDestroyOnLoad(gameObject);
         }else
         {
             Destroy(gameObject);
         }
-    }
+    } 
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +32,13 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void addScore()
+    public void SetPlayerName(string newName)
     {
-        instance.score += 1;
+        instance.playerName = newName;
     }
-    public static int getScore()
+
+    public string GetPlayerName()
     {
-        return instance.score;
+        return instance.playerName;
     }
 }

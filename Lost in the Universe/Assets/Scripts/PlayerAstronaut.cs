@@ -156,6 +156,7 @@ public class PlayerAstronaut : MonoBehaviour
             GameObject gem = other.gameObject;
             gem.SetActive(false);
             mgInventory.AddInventoryOne(gem);
+            mgInventory.CountGem(gem);
             AudioManager.instance.GemSFX();
         }
     }

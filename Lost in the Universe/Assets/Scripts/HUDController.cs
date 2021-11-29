@@ -8,16 +8,23 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textGem;
     [SerializeField] private Text textLives;
 
+    [SerializeField] private InventoryManager mgInventory;
     // Start is called before the first frame update
     void Start()
     {
-        textGem.text = "A";
-        textLives.text = "B";
+
+        textLives.text = "7";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateGemUI();
+    }
+
+    void UpdateGemUI()
+    {
+        int[] gemCount = mgInventory.GetGemQuantity();
+        textGem.text = "" + gemCount[0];
     }
 }
