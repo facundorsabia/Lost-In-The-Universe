@@ -18,7 +18,7 @@ public class PlayerAstronaut : MonoBehaviour
     [SerializeField] private float groundDistance = 0.3f;
     Vector3 velocity;
 
-    [SerializeField] private int playerLives = 7;
+
     [SerializeField] private string playerName = "Harlan";
     [SerializeField] private float playerScale = 10f;
     [SerializeField] private float playerScaleGate = 5f;
@@ -64,7 +64,6 @@ public class PlayerAstronaut : MonoBehaviour
         animPlayer.SetBool("isFlip", isFlip);
         Jump();
         animPlayer.SetBool("isJump", isJump);
-        PlayerDead();
 
         if (Input.GetKeyUp(KeyCode.G))
         {
@@ -117,34 +116,18 @@ public class PlayerAstronaut : MonoBehaviour
         }
     }
 
-    private void HealPlayer() 
-    {
-        playerLives = playerLives + 1;
-    }
-
-    private void DamagePlayer() 
-    {
-        playerLives = playerLives - 1;
-    }
+  
 
  
     private void OnCollisionEnter (Collision collision)
     {
         if (collision.gameObject.layer == 8)
         {
-        DamagePlayer();
-        Debug.Log("Los Aliens son venenosos, intenta no tocarlos. Perdiste una vida y ahora tienes " + playerLives);  
+        GameManager.DamagePlayer(); 
         }
 
     }
 
-       private void PlayerDead() 
-    {
-        if(playerLives <= 0){
-            Debug.Log("PERDISTE TODAS TUS VIDAS");
-            playerLives = 7;
-        }
-    }
 
     //Method to transform player Scale with triggering the gate
     private void OnTriggerEnter (Collider other)
@@ -168,8 +151,8 @@ public class PlayerAstronaut : MonoBehaviour
              healCounter += Time.deltaTime;
              if (healCounter >= 5)
              {
-                 Debug.Log("Tus vidas son " + playerLives);
-                HealPlayer();
+
+                GameManager.HealPlayer();
         
                  healCounter = 0;
              }
@@ -180,8 +163,7 @@ public class PlayerAstronaut : MonoBehaviour
              healCounter += Time.deltaTime;
              if (healCounter >= 5)
              {
-                DamagePlayer();
-                 Debug.Log("Estas perdiendo vidas, esta planta es VENENOSA: " + playerLives);
+                GameManager.DamagePlayer();
                  healCounter = 0;
              }
          }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public enum typesGem {Gem, SuperGem, HiperGem};
 
     private int score;
+    private int playerLives;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             score = 0;
+            playerLives = 7;
             DontDestroyOnLoad(gameObject);
         }else
         {
@@ -43,5 +45,19 @@ public class GameManager : MonoBehaviour
     public static int getScore()
     {
         return instance.score;
+    }
+
+    public static void HealPlayer()
+    {
+        instance.playerLives += 1;
+    }
+
+   public static void DamagePlayer()
+    {
+        instance.playerLives -= 1;
+    }
+    public static int GetPlayerLives()
+    {
+        return instance.playerLives;
     }
 }
