@@ -7,6 +7,7 @@ TagManager:
   - Enviroment
   - Terrain
   - Gem
+  - bullet
   layers:
   - Default
   - TransparentFX

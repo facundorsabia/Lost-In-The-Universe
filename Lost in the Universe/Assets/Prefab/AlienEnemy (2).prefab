@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7248cbf03ed2409ea91d8bd97c9d85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myData: {fileID: 11400000, guid: 62fb21feb8648dc429a5a2faf33ee9be, type: 2}
   visionRay: {fileID: 6353682826568501687}
   distanceRay: 10
   speedEnemy: 3

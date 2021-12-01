@@ -38,6 +38,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: myData
+      value: 
+      objectReference: {fileID: 11400000, guid: 62fb21feb8648dc429a5a2faf33ee9be, type: 2}
+    - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: visionRay
       value: 
       objectReference: {fileID: 987186896}
@@ -95,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153933789, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_Name
-      value: AlienEnemy (1)
+      value: AlienEnemy (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153933789, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_IsActive

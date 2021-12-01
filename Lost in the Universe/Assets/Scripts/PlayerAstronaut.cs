@@ -126,6 +126,11 @@ public class PlayerAstronaut : MonoBehaviour
         GameManager.DamagePlayer(); 
         }
 
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+        GameManager.DamagePlayer(); 
+        }
+
     }
 
 

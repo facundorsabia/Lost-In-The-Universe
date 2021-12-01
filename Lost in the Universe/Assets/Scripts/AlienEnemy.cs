@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlienEnemy : MonoBehaviour
 {
     // Custom Variables
-
+    [SerializeField] protected AlienData myData;
     [SerializeField] private GameObject visionRay;
     [SerializeField] private float distanceRay = 10.0f;
     [SerializeField] private float speedEnemy = 3f;
@@ -30,13 +30,13 @@ public class AlienEnemy : MonoBehaviour
 
     private void MoveEnemy(Vector3 direction)
     {
-      transform.Translate(speedEnemy * Time.deltaTime * direction);
+      transform.Translate(myData.speedEnemy * Time.deltaTime * direction);
     }
 
     private void MoveTowards()
     {
         Vector3 direction = ((player.transform.position + distance) - transform.position).normalized;
-        transform.position += speedEnemy * direction * Time.deltaTime; 
+        transform.position += myData.speedEnemy * direction * Time.deltaTime; 
     }
 
     private void LookAtPlayer ()
