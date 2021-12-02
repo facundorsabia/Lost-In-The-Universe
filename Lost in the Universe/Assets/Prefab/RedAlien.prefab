@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 3651253283666846155}
   - component: {fileID: 3744607058713228825}
   - component: {fileID: 3649482037449374425}
+  - component: {fileID: 575708071}
   m_Layer: 0
   m_Name: RedAlien
   m_TagString: Untagged
@@ -372,14 +373,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7409d56ff67356c49863aa792eecda42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCoolDown: 1.95
-  timeShoot: 2
+  myData: {fileID: 11400000, guid: 8a0a5c360673a3b479d4eec66354eecb, type: 2}
   bulletPrefab: {fileID: 8327326172247663861, guid: 68933c03fa0f1cc42850d705c2202639, type: 3}
   visionRay: {fileID: 3649482037441285656}
-  distanceRay: 10
-  speedEnemy: 3
-  speedToLook: 5
   enemyBehaviour: 0
+--- !u!65 &575708071
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648832446773478517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.93049836, z: 1}
+  m_Center: {x: 0, y: 0.50030065, z: 0}
 --- !u!1 &3648934797088511873
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,13 @@ using UnityEngine;
 public class RedAlienEnemy : MonoBehaviour
 {
     // Custom Variables
+    [SerializeField] protected RedAlienData myData;
     private Animator animRedAlien;
 	private CharacterController controller;
     private bool battle = false;
-    [SerializeField] private float shootCoolDown = 1.95f;
-    [SerializeField] private float timeShoot = 2f;
     private bool canShoot = true;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] private GameObject visionRay;
-    [SerializeField] private float distanceRay = 10.0f;
-    [SerializeField] private float speedEnemy = 3f;
-    [SerializeField] private float speedToLook = 5f;
     private GameObject player;
     private enum EnemyBehaviour {Look, Chase}
     [SerializeField] private EnemyBehaviour enemyBehaviour;
@@ -38,10 +34,10 @@ public class RedAlienEnemy : MonoBehaviour
             Raycast();
         }else
         {
-            timeShoot += Time.deltaTime;
+            myData.timeShoot += Time.deltaTime;
             battle = false;
         }
-        if (timeShoot > shootCoolDown)
+        if (myData.timeShoot > myData.shootCoolDown)
         {
             canShoot = true;
         }
@@ -49,20 +45,20 @@ public class RedAlienEnemy : MonoBehaviour
 
     private void MoveEnemy(Vector3 direction)
     {
-      transform.Translate(speedEnemy * Time.deltaTime * direction);
+      transform.Translate(myData.speedEnemy * Time.deltaTime * direction);
     }
 
     private void MoveTowards()
     {
         Vector3 direction = ((player.transform.position + distance) - transform.position).normalized;
-        transform.position += speedEnemy * direction * Time.deltaTime; 
+        transform.position += myData.speedEnemy * direction * Time.deltaTime; 
     }
 
     private void LookAtPlayer ()
     {
         Vector3 direction = player.transform.position - transform.position;
         Quaternion newRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, myData.speedToLook * Time.deltaTime);
     }
 
 
@@ -70,12 +66,12 @@ public class RedAlienEnemy : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward), out hit, distanceRay))
+        if (Physics.Raycast(visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward), out hit, myData.distanceRay))
         {
             if(hit.transform.tag == "Player")
             {
                 canShoot = false;
-                timeShoot = 0;
+                myData.timeShoot = 0;
                 battle = true;
                 GameObject b = Instantiate(bulletPrefab, visionRay.transform.position, bulletPrefab.transform.rotation);
                 b.GetComponent<Rigidbody>().AddForce (visionRay.transform.TransformDirection(Vector3.forward) * 10f , ForceMode.Impulse);
@@ -88,7 +84,7 @@ public class RedAlienEnemy : MonoBehaviour
         if(canShoot)
         {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * distanceRay);
+        Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * myData.distanceRay);
         }
     }
 }

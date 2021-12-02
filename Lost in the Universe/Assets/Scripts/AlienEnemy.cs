@@ -7,9 +7,6 @@ public class AlienEnemy : MonoBehaviour
     // Custom Variables
     [SerializeField] protected AlienData myData;
     [SerializeField] private GameObject visionRay;
-    [SerializeField] private float distanceRay = 10.0f;
-    [SerializeField] private float speedEnemy = 3f;
-    [SerializeField] private float speedToLook = 5f;
     private GameObject player;
     private enum EnemyBehaviour {Look, Chase}
     [SerializeField] private EnemyBehaviour enemyBehaviour;
@@ -43,7 +40,7 @@ public class AlienEnemy : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
         Quaternion newRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, myData.speedToLook * Time.deltaTime);
     }
 
     private void SetEnemyBehaviour(EnemyBehaviour enemyBehaviour)
@@ -66,7 +63,7 @@ public class AlienEnemy : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward), out hit, distanceRay))
+        if (Physics.Raycast(visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward), out hit, myData.distanceRay))
         {
             if(hit.transform.tag == "Player")
             {
@@ -79,6 +76,6 @@ public class AlienEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * distanceRay);
+        Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * myData.distanceRay);
     }
 }

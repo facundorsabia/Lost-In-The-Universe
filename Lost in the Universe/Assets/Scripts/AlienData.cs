@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New AlienData", menuName = "Alien Data")]
+
 public class AlienData : ScriptableObject
 {
     public string alienName = "Tentacle";
