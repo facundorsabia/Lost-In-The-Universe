@@ -34,6 +34,6 @@ public class AudioManager : MonoBehaviour
     public void GemSFX()
     {
         AudioClip clip = gemClips[0];
-        gemSource.PlayOneShot(clip);
+        gemSource.PlayOneShot(clip, 0.5f);
     }
 }
