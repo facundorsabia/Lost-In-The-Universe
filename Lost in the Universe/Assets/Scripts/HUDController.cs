@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDController : MonoBehaviour
 {
+
     [SerializeField] private Text textGem;
     [SerializeField] private Text textLives;
-
+    [SerializeField] private TextMeshProUGUI gameOver;
     [SerializeField] private InventoryManager mgInventory;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerAstronaut.onDeath += OnDeadHandler;
     }
 
     // Update is called once per frame
@@ -33,5 +35,11 @@ public class HUDController : MonoBehaviour
     {
         int playerLives = GameManager.GetPlayerLives();
         textLives.text = "" + playerLives;
+    }
+
+    private void OnDeadHandler()
+    {
+        gameOver.text = "GAME OVER";
+        textLives.text = "0";
     }
 }

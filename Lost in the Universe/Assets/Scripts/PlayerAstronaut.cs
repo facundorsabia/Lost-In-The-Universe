@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerAstronaut : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class PlayerAstronaut : MonoBehaviour
 
     [SerializeField] private string playerName = "Harlan";
     [SerializeField] private float playerScale = 10f;
-    [SerializeField] private float playerScaleGate = 5f;
+
 
     private bool isFlip = false;
     private bool isRun = false;
@@ -30,18 +31,20 @@ public class PlayerAstronaut : MonoBehaviour
 
     private Animator animPlayer;
 
-    private float gateTime;
 
-    private float cooldownTime = 0.2f;
+
     private float cameraAxis;
 
     Vector3 _initialPosition;
 
     private float healCounter;
 
-    [SerializeField] private GameObject [] wallPoints;
 
     [SerializeField] private GameObject spaceShip;
+
+    //Events
+
+    public static event Action onDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -56,8 +59,8 @@ public class PlayerAstronaut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controller = GetComponent <CharacterController>();
-		anim = gameObject.GetComponentInChildren<Animator>();
+        controller = GetComponent<CharacterController>();
+        anim = gameObject.GetComponentInChildren<Animator>();
         Move();
         animPlayer.SetBool("isRun", isRun);
         Flip();
@@ -70,7 +73,9 @@ public class PlayerAstronaut : MonoBehaviour
             UseItem();
         }
 
+        GameOver();
     }
+
     // Custom Methods
 
     private void Move(){
@@ -181,5 +186,14 @@ public class PlayerAstronaut : MonoBehaviour
         gem.transform.position = spaceShip.transform.position + new Vector3(1f, 0, 0);
     }
      
+    private void GameOver()
+    {
+        if (GameManager.GetPlayerLives() <= 0)
+        {
+            Debug.Log("Game Over");
+            onDeath?.Invoke();
+        }
+    }
+
 }
 
