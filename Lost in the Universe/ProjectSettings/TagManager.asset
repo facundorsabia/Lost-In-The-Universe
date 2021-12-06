@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Gem
   - bullet
+  - GemPlant
   layers:
   - Default
   - TransparentFX

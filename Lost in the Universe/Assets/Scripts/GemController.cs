@@ -22,4 +22,11 @@ public class GemController : MonoBehaviour
     {
         return typeGem;
     }
+
+    public void SetActiveGem()
+    {
+        gameObject.SetActive(true);
+    }
+
+
 }

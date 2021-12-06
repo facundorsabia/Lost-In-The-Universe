@@ -139,7 +139,6 @@ public class PlayerAstronaut : MonoBehaviour
     }
 
 
-    //Method to transform player Scale with triggering the gate
     private void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.CompareTag("Gem"))
@@ -151,6 +150,10 @@ public class PlayerAstronaut : MonoBehaviour
             mgInventory.AddInventoryOne(gem);
             mgInventory.CountGem(gem);
             AudioManager.instance.GemSFX();
+        }
+        if (other.gameObject.CompareTag("GemPlant"))
+        {
+            Debug.Log("Esta planta hace crecer las gemas a su alrededor");
         }
     }
 
