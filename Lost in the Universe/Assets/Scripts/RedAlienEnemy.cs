@@ -8,8 +8,8 @@ public class RedAlienEnemy : MonoBehaviour
     [SerializeField] protected RedAlienData myData;
     private Animator animRedAlien;
 	private CharacterController controller;
-    private bool battle = false;
-    private bool canShoot = true;
+    protected bool battle = false;
+    protected bool canShoot = true;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] private GameObject visionRay;
     private GameObject player;
@@ -18,14 +18,14 @@ public class RedAlienEnemy : MonoBehaviour
     private Vector3 distance = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         animRedAlien = GetComponent<Animator>();
         player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void  Update()
     {
         LookAtPlayer();
         animRedAlien.SetBool("battle", battle);
@@ -43,16 +43,6 @@ public class RedAlienEnemy : MonoBehaviour
         }
     }
 
-    private void MoveEnemy(Vector3 direction)
-    {
-      transform.Translate(myData.speedEnemy * Time.deltaTime * direction);
-    }
-
-    private void MoveTowards()
-    {
-        Vector3 direction = ((player.transform.position + distance) - transform.position).normalized;
-        transform.position += myData.speedEnemy * direction * Time.deltaTime; 
-    }
 
     private void LookAtPlayer ()
     {
@@ -62,7 +52,7 @@ public class RedAlienEnemy : MonoBehaviour
     }
 
 
-    private void Raycast()
+    protected void Raycast()
     {
         RaycastHit hit;
 
