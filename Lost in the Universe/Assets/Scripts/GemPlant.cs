@@ -25,6 +25,7 @@ public class GemPlant : MonoBehaviour
         {
             onShowGems?.Invoke();
             Debug.Log("Unity Event");
+            gameObject.SetActive(false);
         }
     }
 }
