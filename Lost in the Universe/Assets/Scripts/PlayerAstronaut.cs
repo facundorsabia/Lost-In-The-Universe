@@ -5,41 +5,30 @@ using System;
 
 public class PlayerAstronaut : MonoBehaviour
 {
+    //DESIGN DATA
+    [SerializeField] private float speed = 10f;
+	[SerializeField] private float turnSpeed = 80f;
+	[SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float jumpHeight = 3f;
+    [SerializeField] private float groundDistance = 0.3f;
+    [SerializeField] private float playerScale = 10f;
     private InventoryManager mgInventory;
     private Animator anim;
+    private Animator animPlayer;
 	private CharacterController controller;
-	[SerializeField] private float speed = 10f;
-	[SerializeField] private float turnSpeed = 80f;
 	[SerializeField] private Vector3 moveDirection = Vector3.zero;
-	[SerializeField] private float gravity = -9.8f;
     private bool isGrounded;
-    [SerializeField] private float jumpHeight = 3f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundDistance = 0.3f;
     Vector3 velocity;
-
-
     [SerializeField] private string playerName = "Harlan";
-    [SerializeField] private float playerScale = 10f;
-
-
     private bool isFlip = false;
     private bool isRun = false;
     private bool isJump = false;
     private bool gateActivated = false;
-
-    private Animator animPlayer;
-
-
-
     private float cameraAxis;
-
     Vector3 _initialPosition;
-
     private float healCounter;
-
-
     [SerializeField] private GameObject spaceShip;
 
     //Events
@@ -54,13 +43,13 @@ public class PlayerAstronaut : MonoBehaviour
         _initialPosition = transform.position;
         animPlayer = GetComponent<Animator>();
         mgInventory = GetComponent<InventoryManager>();
+        controller = GetComponent<CharacterController>();
+        anim = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        controller = GetComponent<CharacterController>();
-        anim = gameObject.GetComponentInChildren<Animator>();
         Move();
         animPlayer.SetBool("isRun", isRun);
         Flip();
@@ -121,7 +110,10 @@ public class PlayerAstronaut : MonoBehaviour
         }
     }
 
-  
+  private void OnControllerColliderHit(ControllerColliderHit hit)
+  {
+      Debug.Log(hit.gameObject.name);
+  }
 
  
     private void OnCollisionEnter (Collision collision)
