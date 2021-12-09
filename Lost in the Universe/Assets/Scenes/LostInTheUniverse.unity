@@ -13587,6 +13587,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4191312479828286, guid: b8ca6433e7a78e346904aef72892f856, type: 3}
   m_PrefabInstance: {fileID: 974422200}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &622807812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1114849051045080767, guid: 283867467dce64c0881082056b3b0a2d, type: 3}
+  m_PrefabInstance: {fileID: 1104504152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622807813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622807812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8dda44e0e275d49960696e1f2cdd9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShowGems:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 196356283}
+        m_TargetAssemblyTypeName: GemController, Assembly-CSharp
+        m_MethodName: SetActiveGem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  shootParticle: {fileID: 0}
 --- !u!1001 &624853814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13908,12 +13941,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
       propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1593642432}
     - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
       propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActiveGem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GemController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815136836971523, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5564815137200187496, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
       propertyPath: m_RootOrder
@@ -13962,6 +14015,14 @@ PrefabInstance:
     - target: {fileID: 5564815137200616520, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
       propertyPath: m_Name
       value: Shrooms23 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815137200616520, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564815137200616520, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
+      propertyPath: m_TagString
+      value: GemPlant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3eab8c417acf4af799e7d9ed1c58596, type: 3}
@@ -26113,7 +26174,8 @@ PrefabInstance:
       propertyPath: onShowGems.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActiveGem
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1114849052546897385, guid: 283867467dce64c0881082056b3b0a2d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 283867467dce64c0881082056b3b0a2d, type: 3}
 --- !u!4 &1106704771 stripped
 Transform:

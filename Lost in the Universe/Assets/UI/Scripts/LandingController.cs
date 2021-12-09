@@ -41,6 +41,6 @@ public class LandingController : MonoBehaviour
     public void OnClickPlay()
     {
         Debug.Log("jugar");
-        SceneManager.LoadScene("LostInTheUniverse");
+        SceneManager.LoadScene("Intro");
     }
 }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/UI/Scenes/Landing.unity
     guid: da77d05b73244fc48ad2406f8ae994b1
   - enabled: 1
+    path: Assets/UI/Scenes/Intro.unity
+    guid: 2114e1359d9253d4e9f689ed8e5a2b54
+  - enabled: 1
     path: Assets/Scenes/LostInTheUniverse.unity
     guid: 1087aaeff440f7748a7bef1a7ec81c74
   m_configObjects: {}
