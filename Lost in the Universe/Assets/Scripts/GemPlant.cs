@@ -28,7 +28,6 @@ public class GemPlant : MonoBehaviour
             shootParticle.Play();
             Debug.Log("Unity Event");
             gameObject.SetActive(false);
-            Destroy(gameObject);
         }
     }
 }
