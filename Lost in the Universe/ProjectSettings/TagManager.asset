@@ -9,6 +9,8 @@ TagManager:
   - Gem
   - bullet
   - GemPlant
+  - Space Ship
+  - Poison Plant
   layers:
   - Default
   - TransparentFX
@@ -40,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Global Posprocessing
   - 
   m_SortingLayers:
   - name: Default

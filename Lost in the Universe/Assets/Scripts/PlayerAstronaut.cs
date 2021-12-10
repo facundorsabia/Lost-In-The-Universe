@@ -34,6 +34,7 @@ public class PlayerAstronaut : MonoBehaviour
     //Events
 
     public static event Action onDeath;
+    public static event Action<bool> onDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -121,13 +122,27 @@ public class PlayerAstronaut : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
         GameManager.DamagePlayer(); 
+        onDamage?.Invoke(true);
         }
 
         if (collision.gameObject.CompareTag("bullet"))
         {
         GameManager.DamagePlayer(); 
+        onDamage?.Invoke(true);
+        }
+    }
+
+        private void OnCollisionExit (Collision collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+        onDamage?.Invoke(false);
         }
 
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+        onDamage?.Invoke(false);
+        }
     }
 
 
@@ -151,7 +166,7 @@ public class PlayerAstronaut : MonoBehaviour
 
     private void OnTriggerStay (Collider other)
      {
-         if (other.gameObject.layer == 9)
+         if (other.gameObject.CompareTag("Space Ship"))
          {
              healCounter += Time.deltaTime;
              if (healCounter >= 5)
@@ -163,7 +178,7 @@ public class PlayerAstronaut : MonoBehaviour
              }
          }
 
-        if (other.gameObject.layer == 10)
+        if (other.gameObject.CompareTag("Poison Plant"))
          {
              healCounter += Time.deltaTime;
              if (healCounter >= 5)
