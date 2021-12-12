@@ -8,21 +8,70 @@ public class AlienEnemy : MonoBehaviour
     [SerializeField] protected AlienData myData;
     [SerializeField] private GameObject visionRay;
     private GameObject player;
-    private enum EnemyBehaviour {Look, Chase}
+    private enum EnemyBehaviour {Look, Chase, Patrol}
     [SerializeField] private EnemyBehaviour enemyBehaviour;
     private Vector3 distance = new Vector3(0, 0, 0);
+    private int waypointIndex;
+    private float dist;
+    [SerializeField] Transform[] waypoints;
+    private Rigidbody rbTentacle;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         player = GameObject.Find("Player");
+        rbTentacle = GetComponent<Rigidbody>();
+        waypointIndex = 0;
+        transform.LookAt(waypoints[waypointIndex].position);
+       /* Vector3 direction = waypoints[waypointIndex].position - transform.position;
+        Quaternion newRotation = Quaternion.LookRotation(direction);
+        rbTentacle.MoveRotation(newRotation);*/
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         SetEnemyBehaviour(enemyBehaviour);
-        Raycast();
+        //Raycast();
+    }
+
+   /* void FixedUpdate()
+    {
+        SetEnemyBehaviour(enemyBehaviour);
+        dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
+        if (dist < 4f)
+        {
+            IncreaseIndex();
+        }
+
+    }*/
+
+    void Patrol()
+    {
+       /* rbTentacle.MovePosition(rbTentacle.position + transform.forward * myData.speedEnemy * Time.deltaTime);
+       Vector3 direction = waypoints[waypointIndex].position - transform.position;
+        Quaternion newRotation = Quaternion.LookRotation(direction);
+        rbTentacle.MoveRotation(newRotation);*/
+       transform.Translate(Vector3.forward * myData.speedEnemy * Time.deltaTime);
+        transform.LookAt(waypoints[waypointIndex].position);
+        dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
+        if (dist < 3f)
+        {
+            IncreaseIndex();
+        }
+    }
+
+    void IncreaseIndex()
+    {
+        waypointIndex++;
+        if (waypointIndex >= waypoints.Length)
+        {
+            waypointIndex = 0;
+        }
+        transform.LookAt(waypoints[waypointIndex].position);
+       /* Vector3 direction = waypoints[waypointIndex].position - transform.position;
+        Quaternion newRotation = Quaternion.LookRotation(direction);
+        rbTentacle.MoveRotation(newRotation);*/
     }
 
     private void MoveEnemy(Vector3 direction)
@@ -54,6 +103,10 @@ public class AlienEnemy : MonoBehaviour
             case EnemyBehaviour.Chase:
                 LookAtPlayer();
                 MoveTowards();
+                break;
+
+            case EnemyBehaviour.Patrol:
+                Patrol();
                 break;
 
         }

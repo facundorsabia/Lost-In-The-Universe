@@ -37,6 +37,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -506992311335747175, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: MaxDistance
+      value: 78.67274
+      objectReference: {fileID: 0}
+    - target: {fileID: -506992311335747175, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: -506992311335747175, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049700622, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: myData
       value: 
@@ -47,6 +63,22 @@ PrefabInstance:
       objectReference: {fileID: 987186896}
     - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: enemyBehaviour
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271086539984949969, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: m_Mass
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271086539984949969, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271086539984949969, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
@@ -55,15 +87,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.7
+      value: -60.412025
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.74
+      value: 62.021805
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48
+      value: 94.36
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71,15 +103,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806153515005, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -104,6 +136,10 @@ PrefabInstance:
     - target: {fileID: 7100851806153933789, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100851806153933789, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
+      propertyPath: m_TagString
+      value: Alien Tentacle
       objectReference: {fileID: 0}
     - target: {fileID: 7100851806157115101, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: m_Materials.Array.data[0]

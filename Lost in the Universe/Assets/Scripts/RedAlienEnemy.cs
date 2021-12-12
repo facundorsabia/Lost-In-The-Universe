@@ -27,7 +27,7 @@ public class RedAlienEnemy : MonoBehaviour
     // Update is called once per frame
     public virtual void  Update()
     {
-        LookAtPlayer();
+       LookAtPlayer();
         animRedAlien.SetBool("battle", battle);
         if (canShoot)
         {
@@ -64,7 +64,8 @@ public class RedAlienEnemy : MonoBehaviour
                 myData.timeShoot = 0;
                 battle = true;
                 GameObject b = Instantiate(bulletPrefab, visionRay.transform.position, bulletPrefab.transform.rotation);
-                b.GetComponent<Rigidbody>().AddForce (visionRay.transform.TransformDirection(Vector3.forward) * 10f , ForceMode.Impulse);
+                b.GetComponent<Rigidbody>().AddForce (visionRay.transform.TransformDirection(Vector3.forward) * 20f , ForceMode.Impulse);
+                AudioManager.instance.AlienSpitSFX();
             }            
         }
     }

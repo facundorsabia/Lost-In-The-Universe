@@ -11,6 +11,8 @@ TagManager:
   - GemPlant
   - Space Ship
   - Poison Plant
+  - Turtle Alien
+  - Alien Tentacle
   layers:
   - Default
   - TransparentFX

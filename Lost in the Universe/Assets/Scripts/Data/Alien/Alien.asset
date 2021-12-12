@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51abd6b5f285b5a449eb0cb1f35bd781, type: 3}
   m_Name: Alien
   m_EditorClassIdentifier: 
+  alienName: Tentacle
+  hP: 10
+  distanceRay: 10
+  speedEnemy: 7
+  speedToLook: 5

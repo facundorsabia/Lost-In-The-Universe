@@ -30,11 +30,14 @@ public class PlayerAstronaut : MonoBehaviour
     Vector3 _initialPosition;
     private float healCounter;
     [SerializeField] private GameObject spaceShip;
+    public float flipCoolDown = 2f;
+    public float timeFlip = 2f;
 
     //Events
 
     public static event Action onDeath;
     public static event Action<bool> onDamage;
+    public static event Action onWinLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -88,10 +91,17 @@ public class PlayerAstronaut : MonoBehaviour
     }
 
     private void Flip (){
-        if (Input.GetKeyDown ("tab")) {
+        if (Input.GetKeyDown("tab")) {
             isFlip = true;
-        }else {
+            if (!(isGrounded && velocity.y < 0) && timeFlip > flipCoolDown)
+            { 
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            timeFlip = 0f;
+            }
+        }
+        else {
              isFlip = false;
+             timeFlip += Time.deltaTime;
         }
     }
 
@@ -111,30 +121,40 @@ public class PlayerAstronaut : MonoBehaviour
         }
     }
 
-  private void OnControllerColliderHit(ControllerColliderHit hit)
-  {
-      Debug.Log(hit.gameObject.name);
-  }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+      //Debug.Log(hit.gameObject.name);
+    }
 
  
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.CompareTag("Alien Tentacle"))
         {
-        GameManager.DamagePlayer(); 
+        GameManager.DamagePlayer();
+        AudioManager.instance.DamageSFX();
         onDamage?.Invoke(true);
+        Debug.Log("tentacle");
         }
 
         if (collision.gameObject.CompareTag("bullet"))
         {
         GameManager.DamagePlayer(); 
+        AudioManager.instance.DamageSFX();
         onDamage?.Invoke(true);
+        }
+
+        if (collision.gameObject.CompareTag("Turtle Alien"))
+        {
+            GameManager.DamagePlayer();
+            AudioManager.instance.DamageSFX();
+            onDamage?.Invoke(true);
         }
     }
 
         private void OnCollisionExit (Collision collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.CompareTag("Alien Tentacle"))
         {
         onDamage?.Invoke(false);
         }
@@ -142,6 +162,11 @@ public class PlayerAstronaut : MonoBehaviour
         if (collision.gameObject.CompareTag("bullet"))
         {
         onDamage?.Invoke(false);
+        }
+
+        if (collision.gameObject.CompareTag("Turtle Alien"))
+        {
+            onDamage?.Invoke(false);
         }
     }
 
@@ -176,6 +201,12 @@ public class PlayerAstronaut : MonoBehaviour
         
                  healCounter = 0;
              }
+             //Condition to win Level - amount of Gems
+             if(GameManager.getScore() >= 1 )
+             {
+                onWinLevel?.Invoke();
+                transform.position += new Vector3 (0, -80, 0);
+            }
          }
 
         if (other.gameObject.CompareTag("Poison Plant"))
@@ -184,7 +215,8 @@ public class PlayerAstronaut : MonoBehaviour
              if (healCounter >= 5)
              {
                 GameManager.DamagePlayer();
-                 healCounter = 0;
+                AudioManager.instance.DamageSFX();
+                healCounter = 0;
              }
          }
      }

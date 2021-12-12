@@ -16,6 +16,7 @@ public class HUDController : MonoBehaviour
     void Start()
     {
         PlayerAstronaut.onDeath += OnDeadHandler;
+        PlayerAstronaut.onWinLevel += OnWinHandler;
     }
 
     // Update is called once per frame
@@ -40,6 +41,12 @@ public class HUDController : MonoBehaviour
     private void OnDeadHandler()
     {
         gameOver.text = "GAME OVER";
+        textLives.text = "0";
+    }
+
+    private void OnWinHandler()
+    {
+        gameOver.text = "";
         textLives.text = "0";
     }
 }
