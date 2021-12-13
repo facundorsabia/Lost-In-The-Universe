@@ -8,10 +8,16 @@ public class CameraChange : MonoBehaviour
     [SerializeField] private int indexCamera = 0;
     private int win = 0;
 
+    void Awake()
+    {
+        indexCamera = 0;
+        SwitchCamera(indexCamera);
+    }
     // Start is called before the first frame update
     void Start()
     {
         PlayerAstronaut.onWinLevel += OnWinHandler;
+
     }
 
     // Update is called once per frame

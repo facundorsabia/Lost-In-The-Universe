@@ -52,7 +52,7 @@ public class AlienEnemy : MonoBehaviour
        Vector3 direction = waypoints[waypointIndex].position - transform.position;
         Quaternion newRotation = Quaternion.LookRotation(direction);
         rbTentacle.MoveRotation(newRotation);*/
-       transform.Translate(Vector3.forward * myData.speedEnemy * Time.deltaTime);
+        transform.Translate(Vector3.forward * myData.speedEnemy * Time.deltaTime);
         transform.LookAt(waypoints[waypointIndex].position);
         dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
         if (dist < 3f)
