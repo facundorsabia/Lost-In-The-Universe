@@ -202,7 +202,7 @@ public class PlayerAstronaut : MonoBehaviour
                  healCounter = 0;
              }
              //Condition to win Level - amount of Gems
-             if(GameManager.getScore() >= 10 )
+             if(GameManager.getScore() >= 5 )
              {
                 onWinLevel?.Invoke();
                 transform.position += new Vector3 (0, -80, 0);
