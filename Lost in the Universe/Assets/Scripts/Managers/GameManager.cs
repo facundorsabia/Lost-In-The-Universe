@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             score = 0;
-            playerLives = 7;
+            playerLives = 2;
             DontDestroyOnLoad(gameObject);
         }else
         {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+         PlayerAstronaut.onDeath += OnDeadHandler;
     }
 
     // Update is called once per frame
@@ -61,4 +62,13 @@ public class GameManager : MonoBehaviour
         return instance.playerLives;
     }
 
+    private void OnDeadHandler()
+    {
+        Invoke("Restart", 2f);
+    }
+
+    private void Restart()
+    {
+         SceneManager.LoadScene("Landing");
+    }
 }
