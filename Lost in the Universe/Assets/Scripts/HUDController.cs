@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HUDController : MonoBehaviour
 {
 
     [SerializeField] private Text textGem;
     [SerializeField] private Text textLives;
-    [SerializeField] private TextMeshProUGUI gameOver;
+    [SerializeField] private Text score;
+    [SerializeField] private GameObject gameOver;
     [SerializeField] private InventoryManager mgInventory;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerAstronaut.onDeath += OnDeadHandler;
+        //PlayerAstronaut.onDeath += OnDeadHandler;
         PlayerAstronaut.onWinLevel += OnWinHandler;
     }
 
@@ -40,13 +43,22 @@ public class HUDController : MonoBehaviour
 
     private void OnDeadHandler()
     {
-        gameOver.text = "GAME OVER";
+        gameOver.SetActive(true);
         textLives.text = "0";
+        int[] gemCount = mgInventory.GetGemQuantity();
+        score.text = "" + gemCount[0] + " POINTS";
     }
 
     private void OnWinHandler()
     {
-        gameOver.text = "";
         textLives.text = "0";
+    }
+
+    public void RestartButton(){
+        SceneManager.LoadScene("LostInTheUniverse");
+    }
+
+    public void ExitButton(){
+        SceneManager.LoadScene("Landing");
     }
 }
