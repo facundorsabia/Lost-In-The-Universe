@@ -6,6 +6,7 @@ using System;
 public class PlayerAstronaut : MonoBehaviour
 {
     //DESIGN DATA
+   
     [SerializeField] private float speed = 10f;
 	[SerializeField] private float turnSpeed = 80f;
 	[SerializeField] private float gravity = -9.8f;
@@ -175,7 +176,7 @@ public class PlayerAstronaut : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gem"))
         {
-            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estar�s listo.");
+            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarás listo.");
             GameManager.addScore();
             GameObject gem = other.gameObject;
             gem.SetActive(false);

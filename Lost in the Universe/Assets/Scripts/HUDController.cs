@@ -31,6 +31,7 @@ public class HUDController : MonoBehaviour
     {
         PlayerAstronaut.onDeath += OnDeadHandler;
         PlayerAstronaut.onWinLevel += OnWinHandler;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +47,9 @@ public class HUDController : MonoBehaviour
         {
         int[] gemCount = mgInventory.GetGemQuantity();
         textGem.text = "" + gemCount[0];
+        }else
+        {
+        textGem.text = "0";
         }
     }
 
@@ -58,13 +62,15 @@ public class HUDController : MonoBehaviour
     private void OnDeadHandler()
     {
         gameOver.SetActive(true);
-        textLives.text = "0";
-        if(mgInventory!=null)
+        
+        //textLives.text = "0";
+        /*if(mgInventory!=null)
         {
+        score.text = "SCORE";
         int[] gemCount = mgInventory.GetGemQuantity();
         score.text = "" + gemCount[0] + " POINTS";
-        }
-        Invoke("HideGameOVerScreen", 2f);
+        }*/
+       Invoke("HideGameOVerScreen", 2f);
     }
 
     private void HideGameOVerScreen()
@@ -74,7 +80,7 @@ public class HUDController : MonoBehaviour
 
     private void OnWinHandler()
     {
-        textLives.text = "0";
+      // score.text = "Has conseguido ganar";
     }
 
     public void RestartButton(){

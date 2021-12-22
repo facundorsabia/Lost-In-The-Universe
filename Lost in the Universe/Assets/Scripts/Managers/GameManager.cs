@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
     //Gem Types
     public enum typesGem {Gem, SuperGem, HiperGem};
 
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     private void OnDeadHandler()
     {
         playerLives = 1;
+        score = 0;
         //SceneManager.LoadScene("LostInTheUniverse");
         Debug.Log("Game Over");
         Invoke("Restart", 2f);
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void Restart()
     {
-        
+
         SceneManager.LoadScene("LostInTheUniverse");
     }
 }
