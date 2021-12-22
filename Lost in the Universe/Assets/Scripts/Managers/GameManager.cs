@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         instance.playerLives += 1;
     }
 
-   public static void DamagePlayer()
+    public static void DamagePlayer()
     {
         instance.playerLives -= 1;
     }
@@ -65,9 +65,9 @@ public class GameManager : MonoBehaviour
     private void OnDeadHandler()
     {
         playerLives = 1;
-        SceneManager.LoadScene("LostInTheUniverse");
+        //SceneManager.LoadScene("LostInTheUniverse");
         Debug.Log("Game Over");
-        //Invoke("Restart", 2f);
+        Invoke("Restart", 2f);
     }
 
     private void Restart()

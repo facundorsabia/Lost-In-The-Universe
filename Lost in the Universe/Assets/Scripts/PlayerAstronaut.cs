@@ -190,36 +190,35 @@ public class PlayerAstronaut : MonoBehaviour
     }
 
     private void OnTriggerStay (Collider other)
-     {
-         if (other.gameObject.CompareTag("Space Ship"))
-         {
-             healCounter += Time.deltaTime;
-             if (healCounter >= 5)
-             {
-
+    {
+        if (other.gameObject.CompareTag("Space Ship"))
+        {
+        healCounter += Time.deltaTime;
+            if (healCounter >= 5)
+            {
                 GameManager.HealPlayer();
-        
-                 healCounter = 0;
-             }
-             //Condition to win Level - amount of Gems
-             if(GameManager.getScore() >= 5 )
-             {
+                healCounter = 0;
+            }
+
+            //Condition to win Level - amount of Gems
+            if(GameManager.getScore() >= 5 )
+            {
                 onWinLevel?.Invoke();
                 transform.position += new Vector3 (0, -80, 0);
             }
-         }
+        }
 
         if (other.gameObject.CompareTag("Poison Plant"))
-         {
-             healCounter += Time.deltaTime;
-             if (healCounter >= 5)
-             {
+        {
+            healCounter += Time.deltaTime;
+            if (healCounter >= 5)
+            {
                 GameManager.DamagePlayer();
                 AudioManager.instance.DamageSFX();
                 healCounter = 0;
-             }
-         }
-     }
+            }
+        }
+    }
 
     private void UseItem()
     {
@@ -227,7 +226,7 @@ public class PlayerAstronaut : MonoBehaviour
         gem.SetActive(true);
         gem.transform.position = spaceShip.transform.position + new Vector3(1f, 0, 0);
     }
-     
+    
     private void GameOver()
     {
         if (GameManager.GetPlayerLives() <= 0)

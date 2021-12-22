@@ -7,18 +7,29 @@ using UnityEngine.SceneManagement;
 
 public class HUDController : MonoBehaviour
 {
-
+    public static HUDController instance;
     [SerializeField] private Text textGem;
     [SerializeField] private Text textLives;
     [SerializeField] private Text score;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private InventoryManager mgInventory;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerAstronaut.onDeath += OnDeadHandler;
+        PlayerAstronaut.onDeath += OnDeadHandler;
         PlayerAstronaut.onWinLevel += OnWinHandler;
     }
 
@@ -31,8 +42,11 @@ public class HUDController : MonoBehaviour
 
     void UpdateGemUI()
     {
+        if(mgInventory!=null)
+        {
         int[] gemCount = mgInventory.GetGemQuantity();
         textGem.text = "" + gemCount[0];
+        }
     }
 
     void UpdateLivesUI()
@@ -45,8 +59,17 @@ public class HUDController : MonoBehaviour
     {
         gameOver.SetActive(true);
         textLives.text = "0";
+        if(mgInventory!=null)
+        {
         int[] gemCount = mgInventory.GetGemQuantity();
         score.text = "" + gemCount[0] + " POINTS";
+        }
+        Invoke("HideGameOVerScreen", 2f);
+    }
+
+    private void HideGameOVerScreen()
+    {
+        gameOver.SetActive(false);
     }
 
     private void OnWinHandler()
