@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             score = 0;
-            playerLives = 1;
+            playerLives = 2;
             DontDestroyOnLoad(gameObject);
         }else
         {
@@ -65,11 +65,10 @@ public class GameManager : MonoBehaviour
 
     private void OnDeadHandler()
     {
-        playerLives = 1;
+        playerLives = 2;
         score = 0;
-        //SceneManager.LoadScene("LostInTheUniverse");
         Debug.Log("Game Over");
-        Invoke("Restart", 2f);
+        Invoke("Restart", 4f);
     }
 
     private void Restart()

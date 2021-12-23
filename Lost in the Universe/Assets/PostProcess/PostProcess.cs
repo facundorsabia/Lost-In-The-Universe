@@ -6,6 +6,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class PostProcess : MonoBehaviour
 {
     private PostProcessVolume globalVolume;
+    private int gameOver = 0;
 
     void Awake()
     {
@@ -15,7 +16,8 @@ public class PostProcess : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       PlayerAstronaut.onDamage += statusColorEffect;
+        PlayerAstronaut.onDamage += statusColorEffect;
+        PlayerAstronaut.onDeath += OnDeadHandler;
     }
 
     // Update is called once per frame
@@ -24,11 +26,18 @@ public class PostProcess : MonoBehaviour
         
     }
 
+    private void OnDeadHandler()
+    {
+        gameOver = 10;
+    }
+
     public void statusColorEffect(bool status)
     {
+        if(gameOver!= 10)
+        {
         ColorGrading colorFX;
         globalVolume.profile.TryGetSettings(out colorFX);
         colorFX.active = status;
+        }
     }
-
 }

@@ -17,7 +17,7 @@ public class CameraChange : MonoBehaviour
     void Start()
     {
         PlayerAstronaut.onWinLevel += OnWinHandler;
-
+        PlayerAstronaut.onDeath += OnDeadHandler;
     }
 
     // Update is called once per frame
@@ -37,6 +37,12 @@ public class CameraChange : MonoBehaviour
             indexCamera = 2;
             SwitchCamera(indexCamera);
         }
+        if (win == 5)
+        {
+            indexCamera = 3;
+            SwitchCamera(indexCamera);
+            cameras[3].transform.position += new Vector3(0, 1, 0)* 3f * Time.deltaTime;
+        }
     }
 
     void SwitchCamera (int index)
@@ -51,5 +57,10 @@ public class CameraChange : MonoBehaviour
     private void OnWinHandler()
     {
         win = 10;
+    }
+
+    private void OnDeadHandler()
+    {
+        win = 5;
     }
 }

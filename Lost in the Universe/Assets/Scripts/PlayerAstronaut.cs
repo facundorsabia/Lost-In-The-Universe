@@ -31,8 +31,11 @@ public class PlayerAstronaut : MonoBehaviour
     Vector3 _initialPosition;
     private float healCounter;
     [SerializeField] private GameObject spaceShip;
-    public float flipCoolDown = 2f;
-    public float timeFlip = 2f;
+
+   //Temporizers
+    [SerializeField] private float time = 2f;
+    [SerializeField] private float flipCoolDown = 2f;
+   
 
     //Events
 
@@ -94,15 +97,15 @@ public class PlayerAstronaut : MonoBehaviour
     private void Flip (){
         if (Input.GetKeyDown("tab")) {
             isFlip = true;
-            if (!(isGrounded && velocity.y < 0) && timeFlip > flipCoolDown)
+            if (!(isGrounded && velocity.y < 0) && time > flipCoolDown)
             { 
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            timeFlip = 0f;
+            time = 0f;
             }
         }
         else {
              isFlip = false;
-             timeFlip += Time.deltaTime;
+             time += Time.deltaTime;
         }
     }
 
@@ -230,10 +233,10 @@ public class PlayerAstronaut : MonoBehaviour
     
     private void GameOver()
     {
-        if (GameManager.GetPlayerLives() <= 0)
+        if (GameManager.GetPlayerLives() <= 0 )
         {
-            Debug.Log("Game Over");
-            onDeath?.Invoke();
+        Debug.Log("Game Over");
+        onDeath?.Invoke();
         }
     }
 
