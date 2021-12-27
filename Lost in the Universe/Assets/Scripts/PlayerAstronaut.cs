@@ -179,7 +179,6 @@ public class PlayerAstronaut : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gem"))
         {
-            Debug.Log("Has conseguido combustible para tu nave! Ya tienes " + GameManager.getScore() + " gemas. Consigue 20 y estarás listo.");
             GameManager.addScore();
             GameObject gem = other.gameObject;
             gem.SetActive(false);
@@ -205,7 +204,7 @@ public class PlayerAstronaut : MonoBehaviour
             }
 
             //Condition to win Level - amount of Gems
-            if(GameManager.getScore() >= 5 )
+            if(GameManager.getScore() >= 15 )
             {
                 onWinLevel?.Invoke();
                 transform.position += new Vector3 (0, -80, 0);
