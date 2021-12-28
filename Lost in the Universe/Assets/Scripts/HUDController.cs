@@ -21,6 +21,7 @@ public class HUDController : MonoBehaviour
     {
         PlayerAstronaut.onDeath += OnDeadHandler;
         PlayerAstronaut.onWinLevel += OnWinHandler;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,7 +57,8 @@ public class HUDController : MonoBehaviour
 
     private void OnWinHandler()
     {
-      // score.text = "Has conseguido ganar";
+        gameOver.SetActive(true);
+       score.text = "Has conseguido ganar";
     }
 
     public void RestartButton(){
@@ -65,5 +67,11 @@ public class HUDController : MonoBehaviour
 
     public void ExitButton(){
         SceneManager.LoadScene("Landing");
+    }
+
+    void OnDestroy()
+    {
+        PlayerAstronaut.onDeath -= OnDeadHandler;
+        PlayerAstronaut.onWinLevel -= OnWinHandler;
     }
 }

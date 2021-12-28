@@ -204,7 +204,7 @@ public class PlayerAstronaut : MonoBehaviour
             }
 
             //Condition to win Level - amount of Gems
-            if(GameManager.getScore() >= 15 )
+            if(GameManager.getScore() >= 1 )
             {
                 onWinLevel?.Invoke();
                 transform.position += new Vector3 (0, -80, 0);
