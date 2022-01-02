@@ -228,25 +228,14 @@ public class PlayerAstronaut : MonoBehaviour
             if(level==1 && (GameManager.getScore() >= 15))
             {
                 onWinLevel?.Invoke();
-                transform.position += new Vector3 (0, -80, 0);
+                transform.position += new Vector3 (0, 8000, 0);
                 level=2;
             }
             if(level==2 && (GameManager.getScore() >= 40))
             {
                 onWinLevel?.Invoke();
-                transform.position += new Vector3 (0, -80, 0);
+                transform.position += new Vector3 (0, 8000, 0);
                 level=3;
-            }
-        }
-
-        if (other.gameObject.CompareTag("Poison Plant"))
-        {
-            healCounter += Time.deltaTime;
-            if (healCounter >= 5)
-            {
-                GameManager.DamagePlayer();
-                AudioManager.instance.DamageSFX();
-                healCounter = 0;
             }
         }
     }
@@ -271,6 +260,7 @@ public class PlayerAstronaut : MonoBehaviour
         if (GameManager.GetPlayerLives() <= 0 )
         {
         Debug.Log("Game Over");
+        transform.position += new Vector3 (0, 8000, 0);
         onDeath?.Invoke();
         }
         if (transform.position.y < -20f && drowned == 10)
