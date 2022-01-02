@@ -42,6 +42,9 @@ public class PlayerAstronaut : MonoBehaviour
     public static event Action onDeath;
     public static event Action<bool> onDamage;
     public static event Action onWinLevel;
+    //Level
+    private int level= 1;
+    private GameObject level2;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +72,7 @@ public class PlayerAstronaut : MonoBehaviour
         {
             UseItem();
         }
-
+        FindLevel();
         GameOver();
     }
 
@@ -104,8 +107,8 @@ public class PlayerAstronaut : MonoBehaviour
             }
         }
         else {
-             isFlip = false;
-             time += Time.deltaTime;
+            isFlip = false;
+            time += Time.deltaTime;
         }
     }
 
@@ -130,7 +133,6 @@ public class PlayerAstronaut : MonoBehaviour
       //Debug.Log(hit.gameObject.name);
     }
 
- 
     private void OnCollisionEnter (Collision collision)
     {
         if (collision.gameObject.CompareTag("Alien Tentacle"))
@@ -190,10 +192,25 @@ public class PlayerAstronaut : MonoBehaviour
         {
             Debug.Log("Esta planta hace crecer las gemas a su alrededor");
         }
+        if (other.gameObject.CompareTag("Ocean"))
+        {
+            GameManager.DamagePlayer();
+            AudioManager.instance.DamageSFX();
+        }
     }
 
     private void OnTriggerStay (Collider other)
     {
+        if (other.gameObject.CompareTag("Ocean"))
+        {
+            healCounter += Time.deltaTime;
+            if (healCounter >= 3)
+            {
+            GameManager.DamagePlayer();
+            AudioManager.instance.DamageSFX();
+            healCounter = 0;
+            }
+        }
         if (other.gameObject.CompareTag("Space Ship"))
         {
         healCounter += Time.deltaTime;
@@ -204,10 +221,17 @@ public class PlayerAstronaut : MonoBehaviour
             }
 
             //Condition to win Level - amount of Gems
-            if(GameManager.getScore() >= 1 )
+            if(level==1 && (GameManager.getScore() >= 15))
             {
                 onWinLevel?.Invoke();
                 transform.position += new Vector3 (0, -80, 0);
+                level=2;
+            }
+            if(level==2 && (GameManager.getScore() >= 40))
+            {
+                onWinLevel?.Invoke();
+                transform.position += new Vector3 (0, -80, 0);
+                level=3;
             }
         }
 
@@ -223,6 +247,14 @@ public class PlayerAstronaut : MonoBehaviour
         }
     }
 
+    public void FindLevel()
+    {
+        level2 = GameObject.Find("level2");
+        if ( level2 != null ) 
+        {
+            level = 2;
+        }
+    }
     private void UseItem()
     {
         GameObject gem = mgInventory.GetInventoryOne();

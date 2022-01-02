@@ -7,7 +7,7 @@ public class gameover : MonoBehaviour
     
     public static gameover instance;
     [SerializeField] private GameObject gameOver;
-    [SerializeField] private GameObject instructionOne;
+    //[SerializeField] private GameObject instructionOne;
 
 
     private void Awake()
@@ -27,8 +27,6 @@ public class gameover : MonoBehaviour
     {
         PlayerAstronaut.onDeath += OnDeadHandler;
         gameOver.SetActive(false);
-        instructionOne.SetActive(false);
-        Invoke("FirstInstruction", 1f);
     }
 
     // Update is called once per frame
@@ -37,29 +35,20 @@ public class gameover : MonoBehaviour
         
     }
 
-
-
-    private void FirstInstruction()
-    {
-        instructionOne.SetActive(true);
-        Invoke("HideFirstInstruction", 3f);
-    }
-
-    private void HideFirstInstruction()
-    {
-        instructionOne.SetActive(false);
-    }
-
     private void OnDeadHandler()
     {
         gameOver.SetActive(true);
-      Invoke("HideGameOVerScreen", 4f);
-       Invoke("FirstInstruction", 5f);
+        Invoke("HideGameOVerScreen", 4f);
     }
 
     private void HideGameOVerScreen()
     {
         gameOver.SetActive(false);
+    }
+
+    void OnDestroy()
+    {
+        PlayerAstronaut.onDeath -= OnDeadHandler;
     }
 
 }

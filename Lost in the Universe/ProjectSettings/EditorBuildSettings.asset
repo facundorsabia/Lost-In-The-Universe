@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LostInTheUniverse.unity
     guid: 1087aaeff440f7748a7bef1a7ec81c74
+  - enabled: 1
+    path: Assets/Scenes/LostInTheUniverseLevel2.unity
+    guid: b203747648b8b8847aa2e94013670060
   m_configObjects: {}

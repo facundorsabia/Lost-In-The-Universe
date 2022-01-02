@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] private GameObject instructionOne;
+    [SerializeField] private Text instructionOneText;
     [SerializeField] private GameObject instructionTwo;
     [SerializeField] private GameObject instructionFinalGem;
     [SerializeField] private GameObject instructionComeBacktoShip;
+    [SerializeField] private GameObject instructionJumpWater;
     private int firstGem = 1;
     private int finalGem = 1;
     private int comeBackGem= 1;
+    private int level = 1;
+    private GameObject level2;
+    private int firstInstructionController = 1;
 
     //Gem Types
     public enum typesGem {Gem, SuperGem, HiperGem};
@@ -37,9 +44,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerAstronaut.onDeath += OnDeadHandler;
+        PlayerAstronaut.onWinLevel += OnWinHandler;
+        instructionOne.SetActive(false);
+        Invoke("FirstInstruction", 1f);
         instructionTwo.SetActive(false);
         instructionFinalGem.SetActive(false);
         instructionComeBacktoShip.SetActive(false);
+        instructionJumpWater.SetActive(false);
     }
 
     // Update is called once per frame
@@ -48,6 +59,20 @@ public class GameManager : MonoBehaviour
         SecondInstruction();
         FinalGemInstruction();
         ComeBackToShipInstruction();
+        FindLevel();
+    }
+
+    public void FindLevel()
+    {
+        level2 = GameObject.Find("level2");
+        if ( level2 != null ) 
+        {
+            if(firstInstructionController == 1)
+            {
+            Invoke("FirstInstruction", 1f);
+            }
+            level = 2;
+        }
     }
 
     public static void addScore()
@@ -74,9 +99,38 @@ public class GameManager : MonoBehaviour
         return instance.playerLives;
     }
 
+
+    private void FirstInstruction()
+    {
+        instructionOne.SetActive(true);
+        if(level==2)
+        {
+        instructionOneText.text="Nuevo planeta comandante, encuentra al menos 40 diamantes.";
+        Invoke("JumpWaterInstruction", 4f);
+        firstInstructionController = 2;
+        }
+        Invoke("HideFirstInstruction", 3f);
+    }
+
+    private void HideFirstInstruction()
+    {
+        instructionOne.SetActive(false);
+    }
+
+    private void JumpWaterInstruction()
+    {
+        instructionJumpWater.SetActive(true);
+        Invoke("HideJumpWaterInstruction", 5f);
+    }
+
+    private void HideJumpWaterInstruction()
+    {
+        instructionJumpWater.SetActive(false);
+    }
+
     private void SecondInstruction()
     {
-        if (score == 1 && firstGem == 1)
+        if (score == 1 && firstGem == 1 && level ==1)
         {
             instructionTwo.SetActive(true);
             Invoke("HideSecondInstruction", 3f);
@@ -91,7 +145,12 @@ public class GameManager : MonoBehaviour
 
     private void FinalGemInstruction()
     {
-        if (score == 14 && finalGem == 1)
+        if (score == 14 && finalGem == 1 && level ==1)
+        {
+            instructionFinalGem.SetActive(true);
+            Invoke("HideFinalGemInstruction", 3f);
+        }
+        if (score == 39 && finalGem == 1 && level ==2)
         {
             instructionFinalGem.SetActive(true);
             Invoke("HideFinalGemInstruction", 3f);
@@ -101,12 +160,17 @@ public class GameManager : MonoBehaviour
     private void HideFinalGemInstruction()
     {
         instructionFinalGem.SetActive(false);
-        finalGem = 2;
+        finalGem = 3;
     }
 
-        private void ComeBackToShipInstruction()
+    private void ComeBackToShipInstruction()
     {
-        if (score == 15 && finalGem == 1)
+        if (score == 40 && finalGem == 3 && level==1)
+        {
+            instructionComeBacktoShip.SetActive(true);
+            Invoke("HideComeBackToShipInstruction", 3f);
+        }
+        if (score == 3 && finalGem == 3 && level == 2)
         {
             instructionComeBacktoShip.SetActive(true);
             Invoke("HideComeBackToShipInstruction", 3f);
@@ -127,11 +191,24 @@ public class GameManager : MonoBehaviour
         finalGem = 1;
         Debug.Log("Game Over");
         Invoke("Restart", 4f);
+        Invoke("FirstInstruction", 5f);
     }
 
     private void Restart()
     {
+        if(level == 1)
+        {
+            SceneManager.LoadScene("LostInTheUniverse");
+        }
+        if (level == 2)
+        {
+            SceneManager.LoadScene("LostInTheUniverseLevel2");
+        }
+    }
 
-        SceneManager.LoadScene("LostInTheUniverse");
+    private void OnWinHandler()
+    {
+        playerLives = 7;
+        finalGem = 3;
     }
 }

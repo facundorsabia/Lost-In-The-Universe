@@ -8,14 +8,22 @@ public class AlienEnemy : MonoBehaviour
     [SerializeField] protected AlienData myData;
     [SerializeField] private GameObject visionRay;
     private GameObject player;
-    private enum EnemyBehaviour {Look, Chase, Patrol}
+    private enum EnemyBehaviour {Patrol, Attack}
     [SerializeField] private EnemyBehaviour enemyBehaviour;
     private Vector3 distance = new Vector3(0, 0, 0);
     private int waypointIndex;
     private float dist;
+    private float distPlayer;
     [SerializeField] Transform[] waypoints;
     private Rigidbody rbTentacle;
-
+    private GameObject level2;
+    private int level = 1;
+    private Animator anim;
+    private bool attack = false;
+    [SerializeField] GameObject bulletPrefab;
+    private bool canShoot = true;
+    [SerializeField] private float shootCoolDown = 0.8f;
+    [SerializeField] private float timeShoot = 2f;
 
     void Start()
     {
@@ -23,35 +31,43 @@ public class AlienEnemy : MonoBehaviour
         rbTentacle = GetComponent<Rigidbody>();
         waypointIndex = 0;
         transform.LookAt(waypoints[waypointIndex].position);
-       /* Vector3 direction = waypoints[waypointIndex].position - transform.position;
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        rbTentacle.MoveRotation(newRotation);*/
+        anim = GetComponent<Animator>();
     }
 
 
     void Update()
     {
+        anim.SetBool("attack", attack);
         SetEnemyBehaviour(enemyBehaviour);
-        //Raycast();
+        FindLevel();
+        timeShoot += Time.deltaTime;
+        if (level == 2 )
+        {
+        Raycast();
+        DistancePlayer();
+        }
     }
 
-   /* void FixedUpdate()
+    private void FindLevel()
     {
-        SetEnemyBehaviour(enemyBehaviour);
-        dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
-        if (dist < 4f)
+        level2 = GameObject.Find("level2");
+        if ( level2 != null ) 
         {
-            IncreaseIndex();
+            level = 2;
         }
+    }
 
-    }*/
+    void DistancePlayer()
+    {
+        distPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distPlayer > 20f)
+        {
+            enemyBehaviour = EnemyBehaviour.Patrol;
+        }
+    }
 
     void Patrol()
     {
-       /* rbTentacle.MovePosition(rbTentacle.position + transform.forward * myData.speedEnemy * Time.deltaTime);
-       Vector3 direction = waypoints[waypointIndex].position - transform.position;
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        rbTentacle.MoveRotation(newRotation);*/
         transform.Translate(Vector3.forward * myData.speedEnemy * Time.deltaTime);
         transform.LookAt(waypoints[waypointIndex].position);
         dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
@@ -59,6 +75,7 @@ public class AlienEnemy : MonoBehaviour
         {
             IncreaseIndex();
         }
+        attack = false;
     }
 
     void IncreaseIndex()
@@ -69,9 +86,6 @@ public class AlienEnemy : MonoBehaviour
             waypointIndex = 0;
         }
         transform.LookAt(waypoints[waypointIndex].position);
-       /* Vector3 direction = waypoints[waypointIndex].position - transform.position;
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        rbTentacle.MoveRotation(newRotation);*/
     }
 
     private void MoveEnemy(Vector3 direction)
@@ -85,30 +99,32 @@ public class AlienEnemy : MonoBehaviour
         transform.position += myData.speedEnemy * direction * Time.deltaTime; 
     }
 
-    private void LookAtPlayer ()
+    private void Attack ()
     {
         Vector3 direction = player.transform.position - transform.position;
         Quaternion newRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, myData.speedToLook * Time.deltaTime);
+        attack = true;
+        if(timeShoot > shootCoolDown)
+        {
+        GameObject b = Instantiate(bulletPrefab, visionRay.transform.position, bulletPrefab.transform.rotation);
+        b.GetComponent<Rigidbody>().AddForce (visionRay.transform.TransformDirection(Vector3.forward) * 20f , ForceMode.Impulse);
+        AudioManager.instance.AlienSpitSFX();
+        timeShoot = 0;
+        }
     }
 
     private void SetEnemyBehaviour(EnemyBehaviour enemyBehaviour)
     {
         switch (enemyBehaviour)
         {
-            case EnemyBehaviour.Look:
-                LookAtPlayer();
-                break;
-
-            case EnemyBehaviour.Chase:
-                LookAtPlayer();
-                MoveTowards();
-                break;
-
             case EnemyBehaviour.Patrol:
                 Patrol();
                 break;
 
+            case EnemyBehaviour.Attack:
+                Attack();
+                break;
         }
     }
 
@@ -120,14 +136,13 @@ public class AlienEnemy : MonoBehaviour
         {
             if(hit.transform.tag == "Player")
             {
-                enemyBehaviour = EnemyBehaviour.Chase;
-                Debug.Log("El Alien te vio");
-            }            
+                enemyBehaviour = EnemyBehaviour.Attack;
+            }    
         }
     }
 
     private void OnDrawGizmos()
-    {
+    {   
         Gizmos.color = Color.blue;
         Gizmos.DrawRay (visionRay.transform.position, visionRay.transform.TransformDirection(Vector3.forward) * myData.distanceRay);
     }

@@ -10,12 +10,13 @@ public class Patroller : MonoBehaviour
     private int waypointIndex;
     private float dist;
     private Rigidbody rbTurtle;
-    //private Vector3 moveDirection;
-    //private Vector3 velocity;
+    protected GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         rbTurtle = GetComponent<Rigidbody>();
         waypointIndex = 0;
         transform.LookAt(waypoints[waypointIndex].position);
@@ -24,8 +25,6 @@ public class Patroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //velocity.y += gravity * Time.deltaTime;
-        //moveDirection = Vector3.forward;
     }
 
     void FixedUpdate() 
@@ -40,11 +39,9 @@ public class Patroller : MonoBehaviour
     }
 
 
-    void Patrol()
+    protected void Patrol()
     {
-        //rbTurtle.AddForce(Vector3.forward * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        //rbTurtle.MovePosition(rbTurtle.position + transform.forward * speed * Time.deltaTime);
     }
 
     void IncreaseIndex()

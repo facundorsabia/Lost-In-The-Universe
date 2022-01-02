@@ -13,6 +13,7 @@ TagManager:
   - Poison Plant
   - Turtle Alien
   - Alien Tentacle
+  - Ocean
   layers:
   - Default
   - TransparentFX

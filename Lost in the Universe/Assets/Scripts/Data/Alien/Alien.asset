@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienName: Tentacle
   hP: 10
-  distanceRay: 10
+  distanceRay: 15
   speedEnemy: 7
   speedToLook: 5
