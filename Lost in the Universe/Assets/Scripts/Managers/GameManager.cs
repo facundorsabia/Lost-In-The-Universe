@@ -165,12 +165,12 @@ public class GameManager : MonoBehaviour
 
     private void ComeBackToShipInstruction()
     {
-        if (score == 40 && finalGem == 3 && level==1)
+        if (score == 15 && finalGem == 3 && level==1)
         {
             instructionComeBacktoShip.SetActive(true);
             Invoke("HideComeBackToShipInstruction", 3f);
         }
-        if (score == 3 && finalGem == 3 && level == 2)
+        if (score == 40 && finalGem == 3 && level == 2)
         {
             instructionComeBacktoShip.SetActive(true);
             Invoke("HideComeBackToShipInstruction", 3f);

@@ -1532,6 +1532,8 @@ MonoBehaviour:
   textLives: {fileID: 878335699}
   score: {fileID: 1025534656}
   winLevel: {fileID: 1046948529}
+  nextLevel: {fileID: 0}
+  quitButton: {fileID: 0}
   mgInventory: {fileID: 1147750691393818}
 --- !u!4 &61435104 stripped
 Transform:
@@ -7672,6 +7674,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2723579647031655575, guid: 24af33d5a8bb64de498d8f096ee66a42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396192798194790727, guid: 24af33d5a8bb64de498d8f096ee66a42, type: 3}
+      propertyPath: enemyBehaviour
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6396192798194790727, guid: 24af33d5a8bb64de498d8f096ee66a42, type: 3}
@@ -39114,11 +39120,11 @@ PrefabInstance:
     - target: {fileID: 6353682826589345826, guid: 1ca1aab776cca42b7bec58dc1e91f202, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 1633673068}
+      objectReference: {fileID: 1320152248}
     - target: {fileID: 6353682826589345826, guid: 1ca1aab776cca42b7bec58dc1e91f202, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1075524441}
+      objectReference: {fileID: 476149406}
     - target: {fileID: 6353682826589345828, guid: 1ca1aab776cca42b7bec58dc1e91f202, type: 3}
       propertyPath: m_Mass
       value: 500
@@ -39145,7 +39151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6353682826589345830, guid: 1ca1aab776cca42b7bec58dc1e91f202, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67.41
+      value: 64.46
       objectReference: {fileID: 0}
     - target: {fileID: 6353682826589345830, guid: 1ca1aab776cca42b7bec58dc1e91f202, type: 3}
       propertyPath: m_LocalPosition.z
@@ -56717,7 +56723,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: enemyBehaviour
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271086539984949805, guid: a44bc721e657d406188f5eb1aa2fe6d6, type: 3}
       propertyPath: waypoints.Array.size

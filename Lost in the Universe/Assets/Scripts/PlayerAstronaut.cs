@@ -31,7 +31,7 @@ public class PlayerAstronaut : MonoBehaviour
     Vector3 _initialPosition;
     private float healCounter;
     [SerializeField] private GameObject spaceShip;
-
+    
    //Temporizers
     [SerializeField] private float time = 2f;
     [SerializeField] private float flipCoolDown = 2f;
@@ -45,6 +45,7 @@ public class PlayerAstronaut : MonoBehaviour
     //Level
     private int level= 1;
     private GameObject level2;
+    private int drowned;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class PlayerAstronaut : MonoBehaviour
         mgInventory = GetComponent<InventoryManager>();
         controller = GetComponent<CharacterController>();
         anim = gameObject.GetComponentInChildren<Animator>();
+        drowned = 10;
     }
 
     // Update is called once per frame
@@ -74,6 +76,10 @@ public class PlayerAstronaut : MonoBehaviour
         }
         FindLevel();
         GameOver();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }    
     }
 
     // Custom Methods
@@ -93,8 +99,6 @@ public class PlayerAstronaut : MonoBehaviour
             }else{
                 isRun = false;
             }
-
-        
     }
 
     private void Flip (){
@@ -268,6 +272,11 @@ public class PlayerAstronaut : MonoBehaviour
         {
         Debug.Log("Game Over");
         onDeath?.Invoke();
+        }
+        if (transform.position.y < -20f && drowned == 10)
+        {
+            onDeath?.Invoke();
+            drowned = 1;
         }
     }
 
