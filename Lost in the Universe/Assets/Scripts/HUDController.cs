@@ -12,9 +12,11 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject textGemPosition;
     [SerializeField] private Text textLives;
     [SerializeField] private Text score;
+    [SerializeField] private GameObject scoreObject;
     [SerializeField] private GameObject winLevel;
     [SerializeField] private GameObject nextLevel;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private GameObject finishGame;
     [SerializeField] private InventoryManager mgInventory;
     private GameObject level2;
     private int level = 1;
@@ -80,6 +82,8 @@ public class HUDController : MonoBehaviour
         score.text = "Lo has conseguido Comandante, sigamos viaje!";
         if(level==2)
         {
+            scoreObject.SetActive(false);
+            finishGame.SetActive(true);
             nextLevel.SetActive(false);
             quitButton.SetActive(true);
         }
